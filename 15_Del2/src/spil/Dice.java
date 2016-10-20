@@ -6,6 +6,7 @@ public class Dice {
 	private int value;
 	private int eyes;
 
+	
 	public Dice(int eyes) {
 		if (eyes > 0) {
 			this.eyes = eyes;
