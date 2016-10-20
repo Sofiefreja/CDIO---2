@@ -16,7 +16,7 @@ public class Dice {
 		}
 	}
 
-	public int roll() {// roll the die and return the value (1-6)
+	public int roll() {// roll the die and return the value (From 1 to eyes.)
 		Random dice = new Random();
 		int res = dice.nextInt(eyes) + 1;
 		value = res;
