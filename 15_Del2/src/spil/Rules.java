@@ -2,7 +2,7 @@ package spil;
 import desktop_resources.GUI;
 public class Rules {
 	
-	public int getFieldValue(int t){
+	public int getFieldInfo(int t){
 	int res = 0;
 	switch(t){
 		case 2: 
