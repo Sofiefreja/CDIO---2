@@ -3,7 +3,7 @@ package spil;
 public class Player {
 	private String name;
 	private Account balance;
-	private int position;
+	private int position; // This line is useful for further development.
 	public Player (String name){
 		this.name=name;
 		this.balance.deposit(1000);
