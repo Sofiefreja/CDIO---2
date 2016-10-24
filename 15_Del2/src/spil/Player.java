@@ -4,9 +4,8 @@ public class Player {
 	private String name;
 	private Account balance = new Account();
 	private int position; // This line is useful for further development.
-	
-	public Player (String navn){
-		name=navn;
+	public Player (String name){
+		this.name=name;
 		balance.deposit(1000);
 		position=0;
 	}
