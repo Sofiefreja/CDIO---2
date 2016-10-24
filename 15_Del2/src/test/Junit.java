@@ -8,9 +8,14 @@ public class Junit {
 
 	@Test
 	public void test() {
+		//Test name function
 		Player p = new Player("Børge");
+		assertEquals("Børge",p.toString());
+		//Test getBalance function
 		
-		fail("Not yet implemented");
+		//Test position function
+		//Test withdraw function
+		//Test Deposit funciton
 	}
 
 }
