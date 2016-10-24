@@ -9,7 +9,7 @@ public class Account {
 	}
 
 	public void deposit(int value) {
-		this.balance = value;
+		this.balance += value;
 	}
 
 	public void withdraw(int value) {
