@@ -9,8 +9,8 @@ public class Junit {
 	@Test
 	public void test() {
 		Player p = new Player("Børge");
+		System.out.println(p.getBalance());
 		
-		fail("Not yet implemented");
 	}
 
 }
