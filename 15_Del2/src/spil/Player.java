@@ -10,7 +10,7 @@ public class Player {
 		this.position=0;
 	}
 	public String toString(){
-		return name+" has "+getBalance()+" DKK.";
+		return name;
 	}
 	public void addBalance(int amount){
 		balance.deposit(amount);
