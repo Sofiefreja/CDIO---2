@@ -9,8 +9,8 @@ public class Junit {
 	@Test
 	public void test() {
 		//Test name function
-		Player p = new Player("Børge");
-		assertEquals("Børge",p.toString());
+		Player p = new Player("Svend");
+		assertEquals("Svend",p.toString());
 		//Test position function & setPosition
 		assertEquals(0, p.getPosition());
 		p.setPosition(5);
