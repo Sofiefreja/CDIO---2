@@ -1,5 +1,10 @@
 package spil;
 
+import java.awt.Color;
+import desktop_fields.*;
+import desktop_codebehind.*;
+import desktop_resources.GUI;
+
 public class Player {
 	private String name;
 	private Account balance = new Account();
