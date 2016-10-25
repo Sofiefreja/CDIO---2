@@ -26,6 +26,7 @@ public class Board {
 				GUI.setDice(d1.roll(), d2.roll());
 				int resroll = d1.getValue()+d2.getValue();
 				GUI.removeCar(resroll, p1.toString());
+				GUI.setCar(resroll, p1.toString());
 				int gold = getFieldInfo(resroll);
 				if (gold > 0) {
 					p1.addBalance(gold);
