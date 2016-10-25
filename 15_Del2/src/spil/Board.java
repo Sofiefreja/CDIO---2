@@ -18,9 +18,10 @@ public class Board {
 		Dice d2 = new Dice(6);
 
 		String cp = "p1";
-
-		System.out.println(p1.toString());
-
+		String ExtraTurn = "No";
+		int done = 0;
+		
+while (done == 0) {
 		if (cp.equals("p1")) {
 			boolean res = getUserInput(p1);
 
@@ -35,14 +36,39 @@ public class Board {
 				} else {
 					p1.subBalance(gold);
 				}
+				if (ExtraTurn.equals("Yes")) {
+					cp = "p1";
+					ExtraTurn = "No";
+				} else {
+					cp = "p2";
+				}
 			} else {
 				System.out.println("It doesn't work :(");
 			}
-
 		} else {
 			boolean res = getUserInput(p2);
-
+			if (res == true) {
+				GUI.setDice(d1.roll(), d2.roll());
+				int resroll = d1.getValue() + d2.getValue();
+				GUI.removeCar(resroll, p2.toString());
+				GUI.setCar(resroll, p2.toString());
+				int gold = getFieldInfo(resroll);
+				if (gold > 0) {
+					p2.addBalance(gold);
+				} else {
+					p2.subBalance(gold);
+				}
+				if (ExtraTurn.equals("Yes")) {
+					cp = "p2";
+					ExtraTurn = "No";
+				} else {
+					cp = "p1";
+				}
+			} else {
+				System.out.println("It doesn't work :(");
+			}
 		}
+	}
 	}
 
 	public void makeBoard() {
@@ -115,6 +141,7 @@ public class Board {
 		case 10:
 			GUI.showMessage("You have reached the feared Werewall. You lose 80 points, but you get another turn.");
 			res = -80;
+			String ExtraTurn = "Yes";
 			break;
 		case 11:
 			GUI.showMessage("You stumbled into the pit. You lose 50 points.");
