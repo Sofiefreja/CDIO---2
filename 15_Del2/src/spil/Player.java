@@ -1,18 +1,21 @@
 package spil;
 
-import java.awt.Color;
+import java.awt.Color; // For the Class "Color".
 
-import desktop_codebehind.*;
-import desktop_resources.GUI;
+import desktop_codebehind.*; // For the Class "Car"
+
+import desktop_resources.GUI; // For the GUI
 
 
 public class Player {
 	private String name;
 	private Account balance = new Account();
 	private int position; // This line is useful for further development.
-	private Color theColor = randomColorClass.randomColor();
 	
-	public Player (String name){
+	
+	private Color theColor = randomColorClass.randomColor(); // Creating a random color.
+	
+	public Player (String name){ // constructor
 		this.name=name;
 		Car car = new Car.Builder().typeTractor().secondaryColor(theColor).build();
 		GUI.addPlayer(this.name, 1000, car);
@@ -38,7 +41,7 @@ public class Player {
 	public int getPosition(){
 		return position;
 	}
-	public Color getColor(){
+	public Color getColor(){ // Showing the color of the player.
 		return theColor;
 	}
 }

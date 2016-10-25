@@ -5,15 +5,16 @@ import java.util.Random;
 
 public class randomColorClass {
 
-	public static Color randomColor() {
+	public static Color randomColor() { 
 
 		Color theColor = null; // Initialize the Color variable
 
-		Random dice = new Random(); // Starting a random generator to get a
-									// random int between 1-13
-		int number = dice.nextInt(13) + 1;
+		
+		Random dice = new Random(); // Starting the Ramdom method
+		int number = dice.nextInt(13) + 1; // Generating a number from 1 to 13.
 
-		switch (number) {   // Getting the random color.
+		
+		switch (number) {   // Choosing the color for the random number.
 		case 1:
 			theColor = Color.black;
 			break;
@@ -55,6 +56,6 @@ public class randomColorClass {
 			break;
 		}
 
-		return theColor; // The output.
+		return theColor; // Returns the random Color.
 	}
 }
