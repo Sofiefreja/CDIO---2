@@ -1,10 +1,28 @@
 package spil;
+import java.awt.Color;
 
+import desktop_fields.*;
 import desktop_resources.GUI;
 
 public class Board {
 	
-	
+	public void makeBoard() {
+		Field[] fields = new Field[12];
+		fields[0] = new Street.Builder().setTitle("Begin").setBgColor(Color.yellow).setFgColor(Color.green).build();
+		fields[1] = new Street.Builder().setTitle("Tower").setSubText("+250").setBgColor(Color.blue).setFgColor(Color.red).build();
+		fields[2] = new Street.Builder().setTitle("Crater").setSubText("-100").setBgColor(Color.red).setFgColor(Color.blue).build();
+		fields[3] = new Street.Builder().setTitle("Palace Gates").setSubText("+100").setBgColor(Color.blue).setFgColor(Color.red).build();
+		fields[4] = new Street.Builder().setTitle("Cold Desert").setSubText("-20").setBgColor(Color.red).setFgColor(Color.blue).build();
+		fields[5] = new Street.Builder().setTitle("Walled City").setSubText("+180").setBgColor(Color.blue).setFgColor(Color.red).build();
+		fields[6] = new Street.Builder().setTitle("Monastery").setSubText("0").setBgColor(Color.red).setFgColor(Color.blue).build();
+		fields[7] = new Street.Builder().setTitle("Black Cave").setSubText("-70").setBgColor(Color.blue).setFgColor(Color.red).build();
+		fields[8] = new Street.Builder().setTitle("Huts in the mountain").setSubText("+60").setBgColor(Color.red).setFgColor(Color.blue).build();
+		fields[9] = new Street.Builder().setTitle("The Werewall").setSubText("-80").setBgColor(Color.blue).setFgColor(Color.red).build();
+		fields[10] = new Street.Builder().setTitle("The pit").setSubText("-50").setBgColor(Color.red).setFgColor(Color.blue).build();
+		fields[11] = new Street.Builder().setTitle("Goldmine").setDescription("You found the goldmine! You are rich!!! You gain:").setSubText("+650").setBgColor(Color.blue).setFgColor(Color.red).build();
+		GUI.create(fields);
+		GUI.showMessage("Welcome to the MoneyRace!!!");
+	}
 	
 	public int getFieldInfo(int t){
 		int res = 0;
