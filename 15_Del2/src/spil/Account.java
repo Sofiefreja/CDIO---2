@@ -13,7 +13,7 @@ public class Account {
 	}
 
 	public void withdraw(int value) {
-		this.balance -= value;
+		this.balance += value;
 
 	}
 	public int getBalance() {
