@@ -3,7 +3,9 @@ package spil;
 import java.awt.Color;
 
 import desktop_fields.*;
+import desktop_codebehind.*;
 import desktop_resources.GUI;
+import java.util.*;
 
 public class Board {
 
@@ -45,6 +47,7 @@ public class Board {
 
 	public void makeBoard() {
 		Field[] fields = new Field[12];
+<<<<<<< HEAD
 		fields[0] = new Street.Builder().setTitle("Begin").setBgColor(Color.yellow).setFgColor(Color.green).build();
 		fields[1] = new Street.Builder().setTitle("Tower").setSubText("+250").setBgColor(Color.blue)
 				.setFgColor(Color.red).build();
@@ -69,8 +72,24 @@ public class Board {
 		fields[11] = new Street.Builder().setTitle("Goldmine")
 				.setDescription("You found the goldmine! You are rich!!! You gain:").setSubText("+650")
 				.setBgColor(Color.blue).setFgColor(Color.red).build();
+=======
+		fields[0] = new Street.Builder().setTitle("Begin").setDescription("This is where the game begins.").setSubText(" ").setBgColor(Color.yellow).setFgColor(Color.green).build();
+		fields[1] = new Street.Builder().setTitle("Tower").setDescription("You entered the tower. You are awarded:").setSubText("+250").setBgColor(Color.blue).setFgColor(Color.red).build();
+		fields[2] = new Street.Builder().setTitle("Crater").setDescription("You fell into the crater. You lose:").setSubText("-100").setBgColor(Color.red).setFgColor(Color.blue).build();
+		fields[3] = new Street.Builder().setTitle("Palace Gates").setDescription("You are standing at the palace gates. You are awarded:").setSubText("+100").setBgColor(Color.blue).setFgColor(Color.red).build();
+		fields[4] = new Street.Builder().setTitle("Cold Desert").setDescription("You entered the cold desert. You lose:").setSubText("-20").setBgColor(Color.red).setFgColor(Color.blue).build();
+		fields[5] = new Street.Builder().setTitle("Walled City").setDescription("You have reached Walled city! You are awarded:").setSubText("+180").setBgColor(Color.blue).setFgColor(Color.red).build();
+		fields[6] = new Street.Builder().setTitle("Monastery").setDescription("You entered the Monastery. Nothing happens..").setSubText("0").setBgColor(Color.red).setFgColor(Color.blue).build();
+		fields[7] = new Street.Builder().setTitle("Black Cave").setDescription("You were pushed into a black cave. You lose:").setSubText("-70").setBgColor(Color.blue).setFgColor(Color.red).build();
+		fields[8] = new Street.Builder().setTitle("Huts in the mountain").setDescription("You got to the wonderful huts in the mountain. You are awarded:").setSubText("+60").setBgColor(Color.red).setFgColor(Color.blue).build();
+		fields[9] = new Street.Builder().setTitle("The Werewall").setDescription("You have reached the feared Werewall. You gain another turn, however you lose:").setSubText("-80").setBgColor(Color.blue).setFgColor(Color.red).build();
+		fields[10] = new Street.Builder().setTitle("The pit").setDescription("You stumbled into the pit. You lose:").setSubText("-50").setBgColor(Color.red).setFgColor(Color.blue).build();
+		fields[11] = new Street.Builder().setTitle("Goldmine").setDescription("You found the goldmine! You are rich!!! You gain:").setSubText("+650").setBgColor(Color.blue).setFgColor(Color.red).build();
+>>>>>>> refs/remotes/origin/master
 		GUI.create(fields);
+		
 		GUI.showMessage("Welcome to the MoneyRace!!!");
+		
 	}
 
 	public int getFieldInfo(int t) {
