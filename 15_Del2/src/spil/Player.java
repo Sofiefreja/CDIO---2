@@ -1,15 +1,20 @@
 package spil;
+
 import java.awt.Color;
-import desktop_fields.*;
+
 import desktop_codebehind.*;
 import desktop_resources.GUI;
+
+
 public class Player {
 	private String name;
 	private Account balance = new Account();
 	private int position; // This line is useful for further development.
+	private Color theColor = randomColorClass.randomColor();
+	
 	public Player (String name){
 		this.name=name;
-		Car car = new Car.Builder().typeTractor().secondaryColor(Color.red).build();
+		Car car = new Car.Builder().typeTractor().secondaryColor(theColor).build();
 		GUI.addPlayer(this.name, 1000, car);
 		GUI.setCar(1, this.name);
 		balance.deposit(1000);
@@ -32,5 +37,8 @@ public class Player {
 	}
 	public int getPosition(){
 		return position;
+	}
+	public Color getColor(){
+		return theColor;
 	}
 }
