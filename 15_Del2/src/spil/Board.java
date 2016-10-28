@@ -9,66 +9,100 @@ import java.util.*;
 
 public class Board {
 
+	public static String extra;
+	public static int done;
+
 	public Board() {
 
 		makeBoard();
+		GUI.showMessage("Welcome to the MoneyRace!!!");
 		Player p1 = new Player(GUI.getUserString("Player One, please enter your name:"));
 		Player p2 = new Player(GUI.getUserString("Player Two, please enter your name:"));
 		Dice d1 = new Dice(6);
 		Dice d2 = new Dice(6);
 
 		String cp = "p1";
-		String ExtraTurn = "No";
-		int done = 0;
-		
-while (done == 0) {
-		if (cp.equals("p1")) {
-			boolean res = getUserInput(p1);
+		extra = "No";
+		int posp1 = 1;
+		int posp2 = 1;
 
-			if (res == true) {
-				GUI.setDice(d1.roll(), d2.roll());
-				int resroll = d1.getValue() + d2.getValue();
-				GUI.removeCar(resroll, p1.toString());
-				GUI.setCar(resroll, p1.toString());
-				int gold = getFieldInfo(resroll);
-				if (gold > 0) {
-					p1.addBalance(gold);
+		while (done == 0) {
+			do {
+				if (cp.equals("p1")) {
+					boolean res = getUserInput(p1);
+
+					if (res == true) {
+						GUI.setDice(d1.roll(), d2.roll());
+						int resroll = d1.getValue() + d2.getValue();
+						GUI.removeCar(posp1, p1.toString());
+						GUI.setCar(resroll, p1.toString());
+						posp1 = resroll;
+						int gold = getFieldInfo(resroll);
+						if (gold > 0) {
+							p1.addBalance(gold);
+						} else {
+							p1.subBalance(gold);
+						}
+						if (extra.equals("Yes")) {
+							cp = "p1";
+							extra = "No";
+						} else {
+							cp = "p2";
+						}
+					} else {
+						GUI.showMessage("You have surrendered! " + p2 + "is the winner!");
+						getEndGameInput(p1);
+						break;
+					}
 				} else {
-					p1.subBalance(gold);
+					boolean res = getUserInput(p2);
+					if (res == true) {
+						GUI.setDice(d1.roll(), d2.roll());
+						int resroll = d1.getValue() + d2.getValue();
+						GUI.removeCar(posp2, p2.toString());
+						GUI.setCar(resroll, p2.toString());
+						posp2 = resroll;
+						int gold = getFieldInfo(resroll);
+						if (gold > 0) {
+							p2.addBalance(gold);
+						} else {
+							p2.subBalance(gold);
+						}
+						if (extra.equals("Yes")) {
+							cp = "p2";
+							extra = "No";
+						} else {
+							cp = "p1";
+						}
+					} else {
+						GUI.showMessage("You have surrendered! " + p1 + "is the winner!");
+						getEndGameInput(p1);
+						break;
+
+					}
 				}
-				if (ExtraTurn.equals("Yes")) {
-					cp = "p1";
-					ExtraTurn = "No";
-				} else {
-					cp = "p2";
-				}
-			} else {
-				System.out.println("It doesn't work :(");
 			}
-		} else {
-			boolean res = getUserInput(p2);
-			if (res == true) {
-				GUI.setDice(d1.roll(), d2.roll());
-				int resroll = d1.getValue() + d2.getValue();
-				GUI.removeCar(resroll, p2.toString());
-				GUI.setCar(resroll, p2.toString());
-				int gold = getFieldInfo(resroll);
-				if (gold > 0) {
-					p2.addBalance(gold);
+
+			while (p1.getBalance() < 1050 && p2.getBalance() < 1050);
+			{
+				if (cp.equals("p1") && p2.getBalance() > 1049) {
+
+					GUI.showMessage("Congratulations " + p2 + "!" + " You are the winner!");
+
+					done = 1;
+					getEndGameInput(p1);
+				} else if (cp.equals("p2") && p1.getBalance() > 1049) {
+					GUI.showMessage("Congratulations " + p1 + "!" + " You are the winner!");
+
+					done = 1;
+					getEndGameInput(p1);
 				} else {
-					p2.subBalance(gold);
+					done = 1;
+
 				}
-				if (ExtraTurn.equals("Yes")) {
-					cp = "p2";
-					ExtraTurn = "No";
-				} else {
-					cp = "p1";
-				}
-			} else {
-				System.out.println("It doesn't work :(");
 			}
 		}
-	}
+
 	}
 
 	public void makeBoard() {
@@ -99,7 +133,7 @@ while (done == 0) {
 				.setBgColor(Color.blue).setFgColor(Color.red).build();
 		GUI.create(fields);
 
-		GUI.showMessage("Welcome to the MoneyRace!!!");
+		
 
 	}
 
@@ -141,7 +175,7 @@ while (done == 0) {
 		case 10:
 			GUI.showMessage("You have reached the feared Werewall. You lose 80 points, but you get another turn.");
 			res = -80;
-			String ExtraTurn = "Yes";
+			extra = "Yes";
 			break;
 		case 11:
 			GUI.showMessage("You stumbled into the pit. You lose 50 points.");
@@ -166,7 +200,7 @@ while (done == 0) {
 				proceed = true;
 				roll = true;
 			} else if (input.equals("Display balance")) {
-				GUI.showMessage("*Moneys*");
+				GUI.showMessage("Money");
 			} else if (input.equals("Display rules")) {
 				GUI.showMessage("Rules n' shit");
 			} else if (input.equals("Surrender")) {
@@ -174,5 +208,29 @@ while (done == 0) {
 			}
 		} while (proceed == false);
 		return roll;
+	}
+
+	public boolean getEndGameInput(Player p) {
+		String input;
+		boolean restart = false;
+
+		do {
+			input = GUI.getUserButtonPressed("The game has ended. Do you want to play again?", "Yes", "No");
+			if (input.equals("Yes")) {
+				done = 0;
+				restart = true;
+				GUI.close();
+				makeBoard();makeBoard();makeBoard();makeBoard();makeBoard();makeBoard();makeBoard();makeBoard();makeBoard();
+				new Board();
+
+			} else {
+				GUI.close();
+				done = 1;
+				break;
+
+			}
+		} while (restart == false);
+		return restart;
+
 	}
 }

@@ -12,6 +12,9 @@ public class Player {
 	public Player (String name){
 		this.name=name;
 		balance.deposit(1000);
+		Car car = new Car.Builder().typeTractor().secondaryColor(Color.blue).build();
+		GUI.addPlayer(this.name, getBalance(), car);
+		GUI.setCar(1, this.name);
 		position=0;
 	}
 	public String toString(){
