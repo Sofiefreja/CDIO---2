@@ -49,8 +49,11 @@ public class Board {
 						} else {
 							cp = "p2";
 						}
+						GUI.removeCar(posp1, p1.toString());
+						GUI.setCar(1, p1.toString());
+						posp1 = 1;
 					} else {
-						GUI.showMessage("You have surrendered! " + p2 + "is the winner!");
+						GUI.showMessage("You have surrendered! " + p2 + " is the winner!");
 						getEndGameInput(p1);
 						break;
 					}
@@ -74,8 +77,11 @@ public class Board {
 						} else {
 							cp = "p1";
 						}
+						GUI.removeCar(posp2, p2.toString());
+						GUI.setCar(1, p2.toString());
+						posp2 = 1;
 					} else {
-						GUI.showMessage("You have surrendered! " + p1 + "is the winner!");
+						GUI.showMessage("You have surrendered! " + p1 + " is the winner!");
 						getEndGameInput(p1);
 						break;
 
