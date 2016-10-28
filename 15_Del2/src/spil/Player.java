@@ -17,10 +17,10 @@ public class Player {
 	
 	public Player (String name){ // constructor
 		this.name=name;
-		Car car = new Car.Builder().typeTractor().secondaryColor(theColor).build();
-		GUI.addPlayer(this.name, 1000, car);
-		GUI.setCar(1, this.name);
 		balance.deposit(1000);
+		Car car = new Car.Builder().typeTractor().secondaryColor(theColor).build();
+		GUI.addPlayer(this.name, getBalance(), car);
+		GUI.setCar(1, this.name);
 		position=0;
 	}
 	public String toString(){
