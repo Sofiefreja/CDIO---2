@@ -88,15 +88,15 @@ public class Board {
 				}
 			}
 
-			while (p1.getBalance() < 1050 && p2.getBalance() < 1050);
+			while (p1.getBalance() < 3000 && p2.getBalance() < 3000);
 			{
-				if (cp.equals("p1") && p2.getBalance() > 1049) {
+				if (cp.equals("p1") && p2.getBalance() > 2999) {
 
 					GUI.showMessage("Congratulations " + p2 + "!" + " You are the winner!");
 
 					done = 1;
 					getEndGameInput(p1);
-				} else if (cp.equals("p2") && p1.getBalance() > 1049) {
+				} else if (cp.equals("p2") && p1.getBalance() > 2999) {
 					GUI.showMessage("Congratulations " + p1 + "!" + " You are the winner!");
 
 					done = 1;
