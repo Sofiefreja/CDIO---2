@@ -100,7 +100,7 @@ public class Board {
 
 					done = 1;
 					getEndGameInput(p1);
-				} else if (cp.equals("p2") && p1.getBalance() > 1099) {
+				} else if (cp.equals("p2") && p1.getBalance() > 2999) {
 					GUI.showMessage("Congratulations " + p1 + "!" + " You are the winner!");
 
 					done = 1;
