@@ -10,7 +10,7 @@ public class randomColorClass {
 		Color theColor = null; // Initialize the Color variable
 
 		
-		Random dice = new Random(); // Starting the Ramdom method
+		Random dice = new Random(); // Starting the Random method
 		int number = dice.nextInt(13) + 1; // Generating a number from 1 to 13.
 
 		
