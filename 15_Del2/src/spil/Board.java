@@ -9,6 +9,7 @@ import java.util.*;
 public class Board {
 
 	public static String extra; // String to determine when a user gets an extra turn
+	public static int pos;
 
 	public Board() {
 
@@ -16,14 +17,11 @@ public class Board {
 		GUI.showMessage("Welcome to the MoneyRace!!!");
 		Player p1 = new Player(GUI.getUserString("Player One, please enter your name:")); // Asks the user for a input and then initiates the player class, taking a string (name) as the input, which will be called several times during the code
 		Player p2 = new Player(GUI.getUserString("Player Two, please enter your name:")); // Another initiation of the player class, this time for player two
-		Dice d1 = new Dice(6); // Initiates two die with six eyes.
-		Dice d2 = new Dice(6);
+		Dice d1 = new Dice(6); Dice d2 = new Dice(6); // Initiates two die with six eyes.
 
 		String cp = "p1";
 		extra = "No";
-		int posp1 = 1;
-		int posp2 = 1;
-
+		p1.setPosition(1); p2.setPosition(1); // Sets the starting position for both players
 
 			do { // Initiates a do-while loop, that runs the game until the win conditions are met
 				if (cp.equals("p1")) { // If-else statement that check for which player has a turn
@@ -31,11 +29,10 @@ public class Board {
 
 					if (res == true) { // If the player chose to roll, the turn proceeds
 						GUI.setDice(d1.roll(), d2.roll()); // Both die classes are called to roll, which returns the result of the roll to the GUI
-						int resroll = d1.getValue() + d2.getValue(); // Saves the result of both rolls in one variable
-						GUI.removeCar(posp1, p1.toString()); // Removes the player piece from the current position on the board
-						GUI.setCar(resroll, p1.toString()); // Replaces the player piece on the new position on the board
-						posp1 = resroll;
-						int gold = getFieldInfo(resroll); // Calls the getFieldInfo method, which returns a value and displays a message to the GUI about which square the player landed on
+						GUI.removeCar(p1.getPosition(), p1.toString()); // Removes the player piece from the current position on the board
+						p1.setPosition(d1.getValue() + d2.getValue()); // Saves the result of both rolls within the player class
+						GUI.setCar(p1.getPosition(), p1.toString()); // Replaces the player piece on the new position on the board
+						int gold = getFieldInfo(p1.getPosition()); // Calls the getFieldInfo method, which returns a value and displays a message to the GUI about which square the player landed on
 						if (gold > 0) { // If-else statement that calls a method from the player class, to either add or subtract points to the player account, depending on the value on the square
 							p1.addBalance(gold);
 						} else {
@@ -48,9 +45,9 @@ public class Board {
 						} else {
 							cp = "p2"; // Sets the current player to the next player if no extra turn was recieved
 						}
-						GUI.removeCar(posp1, p1.toString()); // Removes the player piece from the new square
-						GUI.setCar(1, p1.toString()); // Sets the player piece to the starting square
-						posp1 = 1;
+						GUI.removeCar(p1.getPosition(), p1.toString()); // Removes the player piece from the new square
+						p1.setPosition(1);
+						GUI.setCar(p1.getPosition(), p1.toString()); // Sets the player piece to the starting square
 					} else {
 						GUI.showMessage("You have surrendered! " + p2 + " is the winner!"); // If the player chose not to roll, ends the game and pushes a message to the GUI announcing the winner
 						getEndGameInput(p1);
@@ -60,11 +57,10 @@ public class Board {
 					boolean res = getUserInput(p2);
 					if (res == true) {
 						GUI.setDice(d1.roll(), d2.roll());
-						int resroll = d1.getValue() + d2.getValue();
-						GUI.removeCar(posp2, p2.toString());
-						GUI.setCar(resroll, p2.toString());
-						posp2 = resroll;
-						int gold = getFieldInfo(resroll);
+						GUI.removeCar(p2.getPosition(), p2.toString());
+						p2.setPosition(d1.getValue() + d2.getValue());
+						GUI.setCar(p2.getPosition(), p2.toString());
+						int gold = getFieldInfo(p2.getPosition());
 						if (gold > 0) {
 							p2.addBalance(gold);
 						} else {
@@ -77,9 +73,9 @@ public class Board {
 						} else {
 							cp = "p1";
 						}
-						GUI.removeCar(posp2, p2.toString());
-						GUI.setCar(1, p2.toString());
-						posp2 = 1;
+						GUI.removeCar(p2.getPosition(), p2.toString());
+						p2.setPosition(1);
+						GUI.setCar(p2.getPosition(), p2.toString());
 					} else {
 						GUI.showMessage("You have surrendered! " + p1 + " is the winner!");
 						getEndGameInput(p1);
