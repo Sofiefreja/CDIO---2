@@ -92,15 +92,15 @@ public class Board {
 				}
 			}
 
-			while (p1.getBalance() < 3000 && p2.getBalance() < 3000);
+			while (p1.getBalance() < 3000 && p2.getBalance() < 3000 && p1.getBalance() > 0 && p2.getBalance() > 0);
 			{
-				if (cp.equals("p1") && p2.getBalance() > 2999) {
+				if (cp.equals("p1") && p2.getBalance() > 2999 || cp.equals("p2") && p1.getBalance() <= 0) {
 
 					GUI.showMessage("Congratulations " + p2 + "!" + " You are the winner!");
 
 					done = 1;
 					getEndGameInput(p1);
-				} else if (cp.equals("p2") && p1.getBalance() > 2999) {
+				} else if (cp.equals("p2") && p1.getBalance() > 2999 || cp.equals("p1") &&p2.getBalance() <= 0) {
 					GUI.showMessage("Congratulations " + p1 + "!" + " You are the winner!");
 
 					done = 1;
@@ -210,8 +210,6 @@ public class Board {
 			if (input.equals("Roll")) {
 				proceed = true;
 				roll = true;
-			} else if (input.equals("Display balance")) {
-				GUI.showMessage("Money");
 			} else if (input.equals("Display rules")) {
 				GUI.showMessage("Rules n' shit");
 			} else if (input.equals("Surrender")) {
@@ -223,25 +221,11 @@ public class Board {
 
 	public boolean getEndGameInput(Player p) {
 		String input;
-		boolean restart = false;
 
-		do {
-			input = GUI.getUserButtonPressed("The game has ended. Do you want to play again?", "Yes", "No");
-			if (input.equals("Yes")) {
-				done = 0;
-				restart = true;
-				GUI.close();
-				makeBoard();makeBoard();makeBoard();makeBoard();makeBoard();makeBoard();makeBoard();makeBoard();makeBoard();
-				new Board();
-
-			} else {
-				GUI.close();
-				done = 1;
-				break;
-
-			}
-		} while (restart == false);
-		return restart;
+			GUI.showMessage("The game has ended. To play again, relaunch the game.");
+			GUI.close();
+			
+			return true;
 
 	}
 }
