@@ -12,7 +12,6 @@ public class testDice {
 	public void test() {
 		/*
 		 * Uses mean values to determine if the dice throws values within some threshholds of the expected mean value.
-		 * 
 		 */
 		Dice d1 = new Dice();
 		int n=100000;//define number of rolls

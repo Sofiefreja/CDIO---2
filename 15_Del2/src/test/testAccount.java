@@ -14,10 +14,8 @@ public class testAccount {
 		
 		int a = balance.getBalance();
 		assertEquals(0, a);
-	
-			
-		
 	}
+	
 	@Test
 	public void testDeposit() {
 		
@@ -28,18 +26,16 @@ public class testAccount {
 		int a = balance.getBalance();
 		assertEquals(200, a);
 	}
+	
 	@Test
 	public void testWithdraw() {
 		
 		Account balance = new Account();
 		
 		balance.deposit(200);
-		balance.withdraw(100);
+		balance.withdraw(-100);
 		
 		int a = balance.getBalance();
 		assertEquals(100, a);
 	}
-	
-	
-
 }
