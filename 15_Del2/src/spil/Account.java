@@ -2,20 +2,32 @@ package spil;
 
 public class Account {
 
-	private int balance;
+	private int balance; //initialize an amount "balance"
 
-	public Account() {
-		this.balance = 0;
+	public Account() {//constructor
+		balance = 0;
 	}
-
+	
+	
+	/*
+	 * Deposit an amount.
+	 */
 	public void deposit(int value) {
-		this.balance += value;
+		balance += value;
 	}
 
+	/*
+	 * Withdraw an amount.
+	 * OBS. amount has to have a '-' in front of it.
+	 */
 	public void withdraw(int value) {
-		this.balance += value;
+		balance += value;
 
 	}
+	
+	/*
+	 * Returns the balance of your account.
+	 */
 	public int getBalance() {
 
 		return balance;
