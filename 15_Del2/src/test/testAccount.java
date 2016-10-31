@@ -11,7 +11,7 @@ public class testAccount {
 	/*
 	 * testing the method getBalance
 	 */
-	public void testgetBalance() {
+	public void testGetBalance() {
 		
 		Account balance = new Account();
 		
