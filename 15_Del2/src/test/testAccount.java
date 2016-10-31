@@ -8,6 +8,9 @@ import org.junit.Test;
 public class testAccount {
 	
 	@Test
+	/*
+	 * testing the method getBalance
+	 */
 	public void testgetBalance() {
 		
 		Account balance = new Account();
@@ -17,6 +20,9 @@ public class testAccount {
 	}
 	
 	@Test
+	/*
+	 * Testing the method deposit.
+	 */
 	public void testDeposit() {
 		
 		Account balance = new Account();
@@ -28,6 +34,9 @@ public class testAccount {
 	}
 	
 	@Test
+	/*
+	 * tests the withdraw method
+	 */
 	public void testWithdraw() {
 		
 		Account balance = new Account();
