@@ -23,6 +23,7 @@ public class Player {
 		GUI.setCar(1, this.name);
 		position=0;
 	}
+	
 	public String toString(){
 		return name;
 	}

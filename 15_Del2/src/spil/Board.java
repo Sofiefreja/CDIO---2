@@ -42,6 +42,7 @@ public class Board {
 						} else {
 							p1.subBalance(gold);
 						}
+						GUI.setBalance(p1.toString(), p1.getBalance());
 						if (extra.equals("Yes")) {
 							cp = "p1";
 							extra = "No";
@@ -70,6 +71,7 @@ public class Board {
 						} else {
 							p2.subBalance(gold);
 						}
+						GUI.setBalance(p2.toString(), p2.getBalance());
 						if (extra.equals("Yes")) {
 							cp = "p2";
 							extra = "No";
@@ -81,8 +83,10 @@ public class Board {
 						posp2 = 1;
 					} else {
 						GUI.showMessage("You have surrendered! " + p1 + " is the winner!");
+						
 						getEndGameInput(p1);
 						break;
+						
 
 					}
 				}
@@ -106,9 +110,11 @@ public class Board {
 
 				}
 			}
+			
 		}
-
+		
 	}
+	
 
 	public void makeBoard() {
 		Field[] fields = new Field[12];
