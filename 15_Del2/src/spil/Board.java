@@ -195,7 +195,11 @@ public class Board {
 				proceed = true;
 				roll = true;
 			} else if (input.equals("Display rules")) {
-				GUI.showMessage("Rules n' shit");
+				GUI.showMessage("The game is turnbased. Each turn a player rolls the die and lands on a square. \n"
+						+ "There are 11 squares, each with a different effect on your score.\n"
+						+ "Each player starts with 1000 points. The game is won when a player reaches 3000 points.\n"
+						+ "If a players score gets under 0, that player loses.\n"
+						+ "Have fun!");
 			} else if (input.equals("Surrender")) {
 				proceed = true;
 			}
