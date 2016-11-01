@@ -5,10 +5,17 @@ import java.util.Random;
 public class Dice {
 	private int value;
 	private int eyes;
-
+	
+	/*
+	 * Constructor with a defualt of 6 sides.
+	 */
 	public Dice(){
 		this.eyes=6;
 	}
+	
+	/*
+	 * A constructor which makes a dice with n sides.
+	 */
 	public Dice(int eyes) {
 		if (eyes > 0) {
 			this.eyes = eyes;
@@ -25,7 +32,7 @@ public class Dice {
 		return res;
 	}
 
-	public int getValue() {
+	public int getValue() {//return the current value of the dice.
 		return value;
 	}
 }
