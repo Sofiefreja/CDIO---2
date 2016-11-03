@@ -3,8 +3,8 @@ package spil;
 import java.util.Random;
 
 public class Dice {
-	private int value;
-	private int eyes;
+	protected int value;
+	protected int eyes;
 	
 	/*
 	 * Constructor with a defualt of 6 sides.
